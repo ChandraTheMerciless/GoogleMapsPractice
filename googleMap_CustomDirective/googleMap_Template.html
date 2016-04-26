@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--library for angularjs below-->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+	<!--js files for app and components below-->
+
+	<script src="http://maps.google.com/maps/api/js?libraries=places&sensor=false"></script>
+	<script src="gmap.js"></script>
+	<script src="app.js"></script>
+
+	<!--css style via link below-->
+	<link rel="stylesheet" href="googleMap_css.css">
+</head>
+<body ng-app="mapApp">
+<div ng-controller="UserInput">
+	<div gmap-search-box></div>
+	<div ng-init="startMap('map-canvas')"></div>
+</div>
+<div id="map-canvas" name="mapCanvas"></div>
+
+</body>
+</html>

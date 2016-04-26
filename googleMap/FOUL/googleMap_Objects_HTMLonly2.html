@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--Only here for now so I can see it at same time-->
+		<style>
+			#map-canvas{
+				width: 900px;
+				height: 600px;
+				background-color:#CCC;
+			}
+
+			#target{
+				width: 400px;
+				height: 25px;
+				font-size: 1em;
+			}
+			#sButton{
+				width: 100px;
+				height: 30px;
+			}
+		</style>
+		<script src="http://maps.google.com/maps/api/js?libraries=places&sensor=false"></script>
+		<script src="Gmap2.js"></script>
+	</head>
+	
+
+	<body onload="Gmap.init('map-canvas')">
+	<input id="target" type="text" placeholder="Search Box" onkeydown="Gmap.render()">
+	<button id="sButton" onClick="Gmap.render()">Search</button>
+
+<!--	
+	 <form action="demo_form.asp" method="get">
+	<input id="target" type="text" placeholder="Search Box">
+	<input type="submit" value="Submit">
+	</form>
+-->	
+	
+	<div id="map-canvas">
+	</div>
+		
+	</body>
+</html>

@@ -1,0 +1,19 @@
+<div>
+	<input 
+		type="text" 
+		placeholder="Search" 
+		name="search" 
+		ng-model="search"
+	>  </input>
+
+<button ng-click="goTo()">Search</button> <button ng-click="clearLocal()">clear local</button>
+	<div class="listItems">
+		<ul>
+
+			<li class="dropDown" data-ng-repeat="searches in searchHistory">
+				<a ng-click="linkClick(searches.name)">{{ searches.name }}</a>
+			</li>
+
+		</ul>
+	</div>
+<div id="map-canvas" name="mapCanvas"></div>

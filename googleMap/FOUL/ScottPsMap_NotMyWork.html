@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chapter 7 - Google Map By Address</title>
+    <meta name="viewport" content="width=device-width" />
+	<!--NOTE: In Scoot's example, the jQuery link was hosted on his website, so I had to edit it to include
+	the full URL tag-->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+<h1>Chapter 7 - Google Map By Address</h1>
+<hr><h2>Address Map</h2>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false">
+</script>
+<script type="text/javascript">
+  function initialize(location) {
+   var myOptions = {
+      zoom: 17,
+      center: location,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    var map = new google.maps.Map(document.getElementById("basic_map"), myOptions);
+    var marker = new google.maps.Marker({
+        position: location,
+        map: map,
+        title:"CodeGin LLC"
+    });
+  }
+    $().ready(function(){
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode( { 'address': '1373 grandview ave. columbus ohio 43212'}, function(results, status) {
+            initialize(results[0].geometry.location);
+        });
+    });
+	
+
+</script>
+<div id="basic_map" style="width:320px;height:240px;"></div>
+</body>
+<html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	#map-canvas{
+		width: 900px;
+		height: 600px;
+		background-color:#CCC;
+		}
+</style>
+</head>
+<body>
+
+	<input id="target" type="text" placeholder="Search Box">
+	<button id="sButton">Search</button>
+	
+	<div id="map-canvas"></div>
+	
+<script src="http://maps.google.com/maps/api/js?libraries=places&sensor=false"></script>
+<script>
+	
+	var gmap = {
+		
+		//Are these variables in gmap even being affected?
+		location: null,
+		map: null,
+		myOptions: null,
+
+		init(){
+			this.location = new google.maps.LatLng(44.5403, -78.5463);
+
+			myOptions = {
+			  zoom: 17,
+			  center: this.location,
+			  mapTypeId: google.maps.MapTypeId.ROADMAP
+			};
+			//this.map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
+		},
+		
+		render(){
+			this.map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
+		}
+		
+		
+
+	}
+		
+	document.addEventListener("DOMContentLoaded", function() {
+//		got rid of elementId for now for troubleshooting
+//		var elementId = '#map-canvas';
+		gmap.init();
+		gmap.render();
+	});
+	
+	//I wasn't able to get query selector to work, but I was able to get this to act up
+	//when clicking the button when just using a normal addEventListener
+
+	document.getElementById("sButton").addEventListener("click", function() {
+//		alert("Never gonna give you up.")
+//		alert("Never gonna let you down.");
+		
+		var search = document.getElementById("target").value;
+		
+		var geocoder = new google.maps.Geocoder();
+		geocoder.geocode( { 'address': search}, function(results, status){
+		   if (status == google.maps.GeocoderStatus.OK) {
+			  gmap.map.setCenter(results[0].geometry.location);
+			  var marker = new google.maps.Marker({map: gmap.map, position: results[0].geometry.location });
+		   } else {
+			  alert("Geocode was not successful for the following reason: " + status);
+		   }
+		});
+	});
+		
+/*		
+		document.querySelector('#sButton'){	
+		//var self = this;
+		geocoder.geocode( { 'address': 'target'}, function(results, status) {
+			gmap(results[0].geometry.location);
+			//gmap.setZoom(16);
+		});
+	}
+*/	
+	
+</script>
+</body>
+</html>

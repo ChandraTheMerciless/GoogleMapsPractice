@@ -1,0 +1,2 @@
+# GoogleMapsPractice
+This repository's a bit of a mess, because I created these directories when I was first learning Web Development and project structures. I'm just uploading this as a quick reference for myself, but I don't recommend that anyone follows this example :D.
